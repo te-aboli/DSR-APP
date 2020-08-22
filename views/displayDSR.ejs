@@ -1,0 +1,37 @@
+<%- include('index'); -%>
+
+
+<%   if(docs).then(docs => {   %>
+    <table border="1">
+        <tr>
+            <th>Index</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Reporting Manager</th>
+            <th>Project Name</th>
+            <th>Created by</th>
+            <th>Created Date</th>
+            <th>Status</th>
+
+
+        </tr>
+        <% for (var i=0; i<DSRModel.length; i++) { %>
+            <tr>
+                <td><%= i %></td>
+                <td><%= docs[i].TaskName %></td>
+                <td><%= docs[i].TaskDesc %></td>
+                <td><%= docs[i].ReportingManager %></td>
+                <td><%= docs[i].CreatedBy %></td>
+
+                <td>
+                    <a href='/AddDSR/<%= docs[i].Userid %>'>update</a> |
+                    <a href='/delete/<%= docs[i].Userid %>'>Delete</a> 
+
+                </td>
+            </tr>
+
+        <% } %>
+    </table>
+    <% } else { %>
+        No Record Found
+        <% } %>

@@ -1,0 +1,19 @@
+{
+    "name": "dsr-app",
+    "version": "0.0.1",
+    "description": "DSR API's implementation",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "keywords": [
+        "test",
+        "project"
+    ],
+    "author": "Aboli Rode",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.20.0",
+        "nodemon": "^2.0.4"
+    }
+}

@@ -1,0 +1,43 @@
+var express = require('express');
+var router = express.Router();
+var axios = require('axios');
+var path = require('path');
+var userobj = require('../controller/user');
+
+router.get('/RegisterUser', function(req,res)
+{
+    res.render('Register');
+});
+router.post('/RegisterUser', function(req,res){
+    userobj.Register(req,res);
+})
+
+router.get('/login', function(req, res)
+{
+    res.render('Login');
+});
+router.post('/login', function(req,res)
+{
+   userobj.login(req,res);
+});
+router.get('/dashboard/:id', function(req,res)
+{
+    res.render('dashboard');
+})
+router.get('/addDSR/:id',function(req,res)
+{
+    res.render('addDSR');
+})
+router.post('/addDSR/:id', function(req,res)
+{
+    var id = req.params.id;
+    userobj.addDSR(id,req,res);
+})
+router.get('/DisplayDSR/:id' , function(req,res)
+{
+    var userid= req.params.id;
+    userobj.DisplayDSR(userid, req,res);
+});
+
+
+module.exports = router;
