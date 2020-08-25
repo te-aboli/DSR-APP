@@ -1,8 +1,9 @@
 var axios = require('axios') ;
 const express = require('express');
 const router = express.Router();
+var path = require('path');
 
-var Register = function(req  ,res,next)
+var Register = function(req ,res, next)
 {
   console.log("Im here");
   axios({
@@ -27,7 +28,7 @@ var Register = function(req  ,res,next)
 var login = function(req, res, next)
 {
 
-    console.log("Im here");
+    console.log("Im here in login");
     axios({
               method: 'post',
               url: 'http://localhost:8080/User/api/UserLogin',
@@ -39,7 +40,7 @@ var login = function(req, res, next)
               },
              
             }).then((response) =>
-            {//
+            {
               console.log(response);  
               res.redirect('addDSR/'+response.data);
             })
@@ -56,7 +57,7 @@ var addDSR = function(id,req,res,next)
       TaskName: req.body.TaskName,
       TaskDesc: req.body.TaskDesc,
       ReportingManager: req.body.ReportingManager,
-      Projectname: req.body.ProjectName,
+      ProjectName: req.body.ProjectName,
       CreatedBy: req.body.CreatedBy,
       CreateDate: req.body.CreateDate,
       Status: req.body.Status,
@@ -71,22 +72,35 @@ var addDSR = function(id,req,res,next)
 
 }
 
-var DisplayDSR = function(id,req, res)
+var  DisplayDSR = function(id,req, res)
 {
+  
     console.log("in display"+id);
-    axios({
+     axios({
       method: 'get',
-      url: 'http://localhost:8080/DSR/api/DisplayDSR'+id,
-      headers: {
-          'Authorization': 'basic 1M78Y6766C746H138A5T420B1O8T5C5R39M' },
+      url: 'http://localhost:8080/DSR/api/DisplayDSR/'+id,
+       headers: {
+         'Authorization': 'basic 1M78Y6766C746H138A5T420B1O8T5C5R39M' },
      
     }).then((response) =>
     {
-      console.log(response);  
-      res.redirect('DisplayDSR/'+id ,{docs: response.data});
-    })
-
+      res.render('DisplayDSR' ,{docs: response.data});
+    });
 }
+
+var Logout = function(req, res){
+
+  axios({
+    method: 'get',
+    url: 'http://localhost:8080/User/api/Logout',
+     headers: {
+       'Authorization': 'basic 1M78Y6766C746H138A5T420B1O8T5C5R39M' }
+  }).then((response) =>
+  {
+    res.redirect('login');
+  });
+}
+
 
 
 
@@ -94,6 +108,7 @@ module.exports = {
   Register:Register,
   login: login,
   addDSR: addDSR,
-  DisplayDSR:DisplayDSR
+  DisplayDSR:DisplayDSR,
+  Logout: Logout
 
 }

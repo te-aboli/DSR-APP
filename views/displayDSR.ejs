@@ -1,7 +1,15 @@
-<%- include('index'); -%>
+<%- include('dashboard'); -%>
+<html>
+<head>
+    <title>Display</title>
+    <style>
+        table{margin: 0px auto; width:1000px; text-align: center;}
+        th{padding: 10px;}
+    </style>
+</head>
+<body>
 
-
-<%   if(docs).then(docs => {   %>
+<%  console.log("Iam in ejs"+ docs);   %>
     <table border="1">
         <tr>
             <th>Index</th>
@@ -15,23 +23,24 @@
 
 
         </tr>
-        <% for (var i=0; i<DSRModel.length; i++) { %>
+        <% for (var i=0; i<docs.length; i++) { %>
             <tr>
                 <td><%= i %></td>
                 <td><%= docs[i].TaskName %></td>
-                <td><%= docs[i].TaskDesc %></td>
+                <td><%= docs[i].TaskDescription %></td>
                 <td><%= docs[i].ReportingManager %></td>
+                <td><%= docs[i].Projectname %></td>
                 <td><%= docs[i].CreatedBy %></td>
+                <td><%= docs[i].CreateDate %></td>
+                <td><%= docs[i].Status %></td>
+               
 
-                <td>
-                    <a href='/AddDSR/<%= docs[i].Userid %>'>update</a> |
-                    <a href='/delete/<%= docs[i].Userid %>'>Delete</a> 
 
-                </td>
+              
+            
             </tr>
 
         <% } %>
     </table>
-    <% } else { %>
-        No Record Found
-        <% } %>
+</body>
+        </html>

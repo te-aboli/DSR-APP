@@ -2,7 +2,12 @@ const express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+//var favicon = require('serve-favicon');
+var cookieParser = require('cookie-parser');
+var session=require('express-session');
 const user = require('./routes/user');
+const home = require('./routes/home');
+var router = express.Router();
 
 
 const app = express();
@@ -10,7 +15,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cookieParser());
 
 
 //CORS Middleware
@@ -29,18 +34,19 @@ app.set('view options', {
     layout: false
 });
 
+
+
 //Database Connection
 mongoose.connect(
     'mongodb+srv://aboli:'+'aboli' + 
     '@node-project.hsdux.mongodb.net/<dbname>?retryWrites=true&w=majority',
     {
         useNewUrlParser: true, 
-      useUnifiedTopology: true 
-    
-    }
-    );
+        useUnifiedTopology: true 
+    });
 
-
+app.use('/', home);
 app.use('/User', user);
-//app.use('/DSR', DSR);
+
+
 module.exports = app;

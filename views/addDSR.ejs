@@ -1,3 +1,4 @@
+<%- include('dashboard'); -%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +7,26 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/controller/user.js"></script>
     <title>Document</title>
+    <style>
+        input, select{width: 200px; padding:5px; margin: 10px;}
+        form{margin: 0px auto; border: 1px solid black; width: 400px; text-align: center;}
+    </style>
 </head>
 <body>
     <form  method="POST">
-        <input type="text" placeholder="Enter Email" name="TaskName" required>
-        <input type="text"  placeholder="Enter Task Description" name="TaskDesc" required>
-        <input type="text"  placeholder="Enter Reporting Manager" name="ReportingManager" required>
-        <input type="text"  placeholder="Enter Project Name" name="ProjectName" required>
-        <input type="text"  placeholder="Cretaed by" name="CreatedBy" required>
-        <input type="date"  placeholder="Create Date" name="CreateDate" required>
-        <input type="text"  placeholder="status" name="Status" required>
+        <h2>Add Your DSR!</h2>
+        <input type="text" placeholder="Enter Task Name" name="TaskName" required><br/>
+        <input type="text"  placeholder="Enter Task Description" name="TaskDesc" required><br/>
+        <input type="text"  placeholder="Enter Reporting Manager" name="ReportingManager" required><br/>
+        <input type="text"  placeholder="Enter Project Name" name="ProjectName" required><br/>
+        <input type="text"  placeholder="Cretaed by" name="CreatedBy" required><br/>
+        <input type="date"  placeholder="Create Date" name="CreateDate" required><br/>
+        <select   placeholder="status" name="Status" required>
+    <option value="None">Select Status</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+    <option value="Discontinued">Discontinued</option>
+  </select><br/>
         <input type="submit">
     </form>
 </body>
