@@ -1,5 +1,4 @@
-
-
+<%- include('header'); -%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +8,29 @@
     <script src="/controller/user.js"></script>
     <title>Document</title>
     <style>
-        form{ text-align: center; margin: 100px auto; border: 1px solid black; height: auto; width:300px;}
-        input{padding:10px; margin: 10px;}
-        button a{ text-decoration: none; color: black;}
-        button{padding: 10px; width: 100px; margin-bottom: 10px;}
+        form{  margin: 100px auto;border:1px solid black; padding: 20px; height: auto; width:400px;}
+        .btn a{ text-decoration: none; color:white}
+        
     </style>
 </head>
 <body>
     <form  method="POST">
-        <h2>Please Login to Continue!</h2>
-        <input type="email" placeholder="Enter Email" name="Email" required><br/>
-        <input type="password"  placeholder="Enter Password" name="Password" required><br/>
-        <button type="submit">Submit</button>
-        <p>Don't Have an Account? Sign Up</p>
-        <button><a href="RegisterUser">Signup</a></button>
+        <h3>Please Login to Continue!</h3>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="Password" id="exampleInputPassword1" placeholder="Password" required>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+          <small><p>Don't Have an Account? Sign Up</p></small> 
+        <button class="btn btn-primary" ><a href="RegisterUser">Sign Up</a></button>
     </form>
 </body>
 </html>

@@ -12,6 +12,7 @@ router.get('/RegisterUser', function(req,res)
     res.render('Register');
 });
 router.post('/RegisterUser', function(req,res){
+    
     userobj.Register(req,res);
 })
 
@@ -53,7 +54,7 @@ router.get('/DisplayDSR/:id' , function(req,res)
 
 });
 
-router.delete('/logout', function(req, res)
+router.get('/logout', function(req, res)
 {
     userobj.Logout(req, res);
 })

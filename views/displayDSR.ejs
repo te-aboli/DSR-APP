@@ -1,31 +1,51 @@
-<%- include('dashboard'); -%>
+
 <html>
 <head>
     <title>Display</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        table{margin: 0px auto; width:1000px; text-align: center;}
+
+
+        .table{text-align: center;}
         th{padding: 10px;}
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">DSR-APP</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="../addDSR/<%= docs[1].Userid %>">Add DSR</a></li>
+            <li  class="active"><a href="/DisplayDSR/<%- -%>">Display DSR</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          </ul>
+        </div>
+      </nav>
 
 <%  console.log("Iam in ejs"+ docs);   %>
-    <table border="1">
+    <table  class="table table-hover" border="1">
         <tr>
-            <th>Index</th>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Reporting Manager</th>
-            <th>Project Name</th>
-            <th>Created by</th>
-            <th>Created Date</th>
-            <th>Status</th>
+            <th scope="col" >Index</th>
+            <th scope="col">Task Name</th>
+            <th scope="col">Task Description</th>
+            <th scope="col">Reporting Manager</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Created by</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Status</th>
 
 
         </tr>
         <% for (var i=0; i<docs.length; i++) { %>
             <tr>
-                <td><%= i %></td>
+                
+                <td scope="row"><%= i %></td>
                 <td><%= docs[i].TaskName %></td>
                 <td><%= docs[i].TaskDescription %></td>
                 <td><%= docs[i].ReportingManager %></td>
@@ -34,7 +54,7 @@
                 <td><%= docs[i].CreateDate %></td>
                 <td><%= docs[i].Status %></td>
                
-
+                    
 
               
             
